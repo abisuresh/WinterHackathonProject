@@ -64,7 +64,7 @@ function updateMap(users){
   */
   for (i in users)
     {
-      addMarker(lat, lon, type);
+      addMarker(i.lat, i.lon, i.type);
     }
 }
 
