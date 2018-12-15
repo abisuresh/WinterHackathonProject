@@ -20,6 +20,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvQ3WrTpuFpI6yeqqWow6pl0pYiHEXXx0&callback=initMap" async defer>
+    </script>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous">
+    </script>
+        
   </head>
   <body>
     <noscript>
@@ -36,5 +47,15 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
+    
+
+    <!-- The code below is used by the mapcode.js file to control the map with the users on it. --> 
+    
+    <div id="mapDiv"></div>
+    
+    <button id="amDriver">I am a driver</button>
+    <button id="amPassenger">I am a passenger</button>
+
   </body>
 </html>

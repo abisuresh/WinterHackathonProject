@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#map {
+  height: 100%;
+}
+
+#mapDiv {
+  height: 500px;
+  width: 500px;
+  margin: 0;
+  padding: 0;
+}
+    
