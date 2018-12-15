@@ -24,12 +24,13 @@ $( document ).ready(function() {
     }
 
     // Create a map centered on the user's location:
+    var map;
     function createMap(position) {
       // Assign the global variables we created above:
       myLat = position.coords.latitude;
       myLon = position.coords.longitude;
       // Generate the map, centered on the user:
-      map = new google.maps.Map(document.getElementById('mapDiv'), {
+      map = new window.google.maps.Map(document.getElementById('mapDiv'), {
         center: {
           lat: myLat,
           lng: myLon
@@ -65,6 +66,7 @@ function updateMap(users){
     "type": "driver"
   }
   */
+ var i;
   for (i in users)
     {
       addMarker(i.lat, i.lon, i.type);
@@ -88,7 +90,7 @@ var passengerImg = 'https://chairish-prod.freetls.fastly.net/image/product/sized
           icon = driverImg;
         }
 
-      var marker = new google.maps.Marker({
+      var marker = new window.google.maps.Marker({
         position: {
           lat: lat,
           lng: lon
