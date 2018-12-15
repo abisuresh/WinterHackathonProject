@@ -1,30 +1,33 @@
+import React from 'react'
+import $ from 'jquery'
+
 $( document ).ready(function() {
-	 
-   
+
+
    // _________Create the map___________
-    
+
     // This will contain the map:
     var mapDiv = document.getElementById("mapDiv");
-    
+
     // These store the user's location:
     var myLat;
     var myLon;
-    
+
     // Get the user's location:
     function getLocation() {
       if (navigator.geolocation) {
-        // if the browser and user allow it, get their location data, and try to call createMap(). If they allow it but it doesn't work, call showError(). If they don't allow it, show the "not supported" message. 
+        // if the browser and user allow it, get their location data, and try to call createMap(). If they allow it but it doesn't work, call showError(). If they don't allow it, show the "not supported" message.
         navigator.geolocation.getCurrentPosition(createMap, showError);
       } else {
         mapDiv.innerHTML = "Geolocation is not supported by this browser.";
       }
     }
-    
+
     // Create a map centered on the user's location:
     function createMap(position) {
       // Assign the global variables we created above:
       myLat = position.coords.latitude;
-      myLon = position.coords.longitude; 
+      myLon = position.coords.longitude;
       // Generate the map, centered on the user:
       map = new google.maps.Map(document.getElementById('mapDiv'), {
         center: {
@@ -84,7 +87,7 @@ var passengerImg = 'https://chairish-prod.freetls.fastly.net/image/product/sized
         {
           icon = driverImg;
         }
-      
+
       var marker = new google.maps.Marker({
         position: {
           lat: lat,
@@ -94,7 +97,7 @@ var passengerImg = 'https://chairish-prod.freetls.fastly.net/image/product/sized
         icon: icon
         })
       };
-    
+
 
 
 // _______Buttons_________
@@ -111,7 +114,7 @@ $('#amPassenger').click(function(){
   updateServer();
 })
 
-    
+
 
 // _______Communication with the server________
 
