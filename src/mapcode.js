@@ -136,7 +136,7 @@ function updateServer()
 {
   $.ajax({
     type: "POST",
-    url: '',
+    url: '/updateUser',
     data: {
       "lat": myLat,
       "lon": myLon,
