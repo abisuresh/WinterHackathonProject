@@ -76,7 +76,7 @@ function updateMap(users){
 
 // _____ MAP MARKERS ______
 
-// img of horseless carriage:
+// img of carriage:
 var driverImg = 'https://sc01.alicdn.com/kf/HTB1DwZuiVkoBKNjSZFkq6z4tFXan/classic-5-seats-passenger-model-T-car.jpg_50x50.jpg';
 
 // img of classy gentleman:
