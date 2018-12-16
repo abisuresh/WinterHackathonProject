@@ -2,33 +2,33 @@ import React from 'react'
 import $ from 'jquery'
 
 $( document ).ready(function() {
-
-
+	 
+   
    // _________Create the map___________
-
+    
     // This will contain the map:
     var mapDiv = document.getElementById("mapDiv");
-
+    var map;
+  
     // These store the user's location:
     var myLat;
     var myLon;
-
+    
     // Get the user's location:
     function getLocation() {
       if (navigator.geolocation) {
-        // if the browser and user allow it, get their location data, and try to call createMap(). If they allow it but it doesn't work, call showError(). If they don't allow it, show the "not supported" message.
+        // if the browser and user allow it, get their location data, and try to call createMap(). If they allow it but it doesn't work, call showError(). If they don't allow it, show the "not supported" message. 
         navigator.geolocation.getCurrentPosition(createMap, showError);
       } else {
         mapDiv.innerHTML = "Geolocation is not supported by this browser.";
       }
     }
-
+    
     // Create a map centered on the user's location:
-    var map;
     function createMap(position) {
       // Assign the global variables we created above:
       myLat = position.coords.latitude;
-      myLon = position.coords.longitude;
+      myLon = position.coords.longitude; 
       // Generate the map, centered on the user:
       map = new window.google.maps.Map(document.getElementById('mapDiv'), {
         center: {
@@ -57,26 +57,11 @@ $( document ).ready(function() {
       }
     }
 
-// populates the map with other users, a list of which is returned from the server.
-function updateMap(users){
-  /* Users should be an ARRAY of JSON objects. Each object should look like this:
-  {
-    "lat": 29.7604,
-    "lon": 95.3698,
-    "type": "driver"
-  }
-  */
- var i;
-  for (i in users)
-    {
-      addMarker(i.lat, i.lon, i.type);
-    }
-}
 
 
 // _____ MAP MARKERS ______
 
-// img of carriage:
+// img of horseless carriage:
 var driverImg = 'https://sc01.alicdn.com/kf/HTB1DwZuiVkoBKNjSZFkq6z4tFXan/classic-5-seats-passenger-model-T-car.jpg_50x50.jpg';
 
 // img of classy gentleman:
@@ -89,7 +74,10 @@ var passengerImg = 'https://chairish-prod.freetls.fastly.net/image/product/sized
         {
           icon = driverImg;
         }
-
+      if (typeof lat == 'string') { lat = parseFloat(lat);}
+      if (typeof lon == 'string') { lon = parseFloat(lon);}
+      
+      
       var marker = new window.google.maps.Marker({
         position: {
           lat: lat,
@@ -99,9 +87,27 @@ var passengerImg = 'https://chairish-prod.freetls.fastly.net/image/product/sized
         icon: icon
         })
       };
+    
 
 
-
+// populates the map with other users, a list of which is returned from the server.
+function updateMap(users){
+  /* Users should be an ARRAY of JSON objects. Each object should look like this:
+  {
+    "lat": 29.7604,
+    "lon": 95.3698,
+    "type": "driver"
+  }
+  */
+  console.log(users);
+  for (var i in users)
+    {
+      addMarker(users[i].lat, users[i].lon, users[i].type);
+    }
+}
+  
+  
+  
 // _______Buttons_________
 
 var myType;
@@ -116,7 +122,7 @@ $('#amPassenger').click(function(){
   updateServer();
 })
 
-
+    
 
 // _______Communication with the server________
 
@@ -126,6 +132,7 @@ function pollServer()
   // send an HTTP GET request to the '/poll' endpoint on the server
   $.ajax({
     type: "GET",
+    dataType: 'JSON',
     url: '/poll'
   })    // it expects to be returned an array of JSON objects, each representing a user.
   .done(function(res) {
@@ -139,24 +146,29 @@ function pollServer()
 function updateServer()
 // This is called when you press one of the buttons to be a driver or be a passenger. It tells the server where and what you are.
 {
+  console.log('calling updateServer()');
   $.ajax({
-    type: "POST",
+    type: 'POST',
     url: '/updateUser',
-    data: {
-      "lat": myLat,
-      "lon": myLon,
-      "type": myType
-    }
-  })
-  .done(function(res) {
-    console.log('Updated server.' + res);
+    dataType: 'json',
+    data: {lat: myLat,
+           lon: myLon,
+           type: myType
+         }})
+  
     pollServer();
-    setTimeout(pollServer(), 1000); // in case you weren't yet in the userlist on the map you received, poll again after 1 sec.
-  })
-  .fail(function(err) {
-    console.log('Error while updating server: ' + err.status);
-  });
-}
+    setTimeout(pollServer(), 1000);
+    }
+    
+    
+  /* Sample response from server:
+  res = [{"lat": 29.7604,
+      "lon": 95.3698,
+      "type": "driver"},
+           {"lat": 29.7603,
+      "lon": 95.3699,
+      "type": "passenger"}];
+      */
 
 
 
@@ -166,4 +178,6 @@ function updateServer()
 
 // poll the server every 10 seconds.
     setInterval(pollServer(), 10000)
- });
+
+
+});
