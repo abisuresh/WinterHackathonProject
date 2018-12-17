@@ -37,6 +37,7 @@ $( document ).ready(function() {
         },
         zoom: 12
       });
+      pollServer();
     }
 
 // displays errors in case the map does not load:
@@ -105,7 +106,6 @@ function updateMap(users){
       addMarker(users[i].lat, users[i].lon, users[i].type);
     }
 }
-  
   
   
 // _______Buttons_________
@@ -177,7 +177,10 @@ function updateServer()
     getLocation();
 
 // poll the server every 10 seconds.
-    setInterval(pollServer(), 10000)
+    setInterval(function() {
+      console.log('polling server automatically...');
+      pollServer();
+                           }, 10000)
 
 
 });
