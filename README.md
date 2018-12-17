@@ -1,7 +1,9 @@
 # Horse and Buggy Taxi Service
 
 Horse And Buggy Taxi
+
 https://horse-and-buggy-taxi.glitch.me/
+
 Get a ride in minutes. Or become a driver and earn money on your schedule. Horse and Buggy Taxi is finding better ways to move, work, and succeed for today's modern gentleman or dame about town.
 When you hit a button to be a driver or passenger, an AJAX call is placed to the server which tells it your location and your choice.
 The server adds you to the global list of users, and returns you that list.
