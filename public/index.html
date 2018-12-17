@@ -34,29 +34,55 @@
         
   </head>
   <body>
+    
+    
+    <h1>
+      Horse And Buggy Taxi
+    </h1>
+    <i>Get a ride in minutes. Or become a driver and earn money on your schedule. Horse and Buggy Taxi is finding better ways to move, work, and succeed for the modern 19th-century gentleman or dame about town.</i>
+<br>
+    
+    
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
     
+    
+      <ul>
+      <li>When you hit a button to be a driver or passenger, an AJAX call is placed to the server which tells it your location and your choice.</li><br>
+      <li>The server adds you to the global list of users, and returns you that list.</li><br>
+      <li>The map is then updated using that list, so you can see all the other users, including yourself.</li><br>
+<li>If you zoom out far enough on the map, you will see other users (we haven't quite achieved global adoption yet).</li><br>
+      <li>It could be expanded with cosmetic changes, optimizations, an actual database rather than a server-side array, functions for contacting the other users, user accounts, reporting, ratings, etc. And, of course... Payments!</li>
+    </ul>
+    <div id="root"></div>
     
 
     <!-- The code below is used by the mapcode.js file to control the map with the users on it. --> 
-    
+    <div id="foreground">
+          <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+
+      <div id="choice">
+        
+    <h3>
+       I am a...
+    </h3>
+  <button id="amDriver">Driver</button>     
+  <button id="amPassenger">Passenger</button>
+    <br><br>
     <div id="mapDiv"></div>
-    
-    <button id="amDriver">I am a driver</button>
-    <button id="amPassenger">I am a passenger</button>
+  
+      </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvQ3WrTpuFpI6yeqqWow6pl0pYiHEXXx0&callback=initMap" async defer></script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+      
+    </div>
 
   </body>
 </html>
