@@ -1,5 +1,16 @@
 # Horse and Buggy Taxi Service
 
+Horse And Buggy Taxi
+Get a ride in minutes. Or become a driver and earn money on your schedule. Horse and Buggy Taxi is finding better ways to move, work, and succeed for today's modern gentleman or dame about town.
+When you hit a button to be a driver or passenger, an AJAX call is placed to the server which tells it your location and your choice.
+The server adds you to the global list of users, and returns you that list.
+The map is then updated using that list, so you can see all the other users, including yourself.
+
+If you zoom out far enough on the map, you will see other users (we haven't quite achieved global adoption yet).
+
+It could be expanded with cosmetic changes, an actual database rather than a server-side array, functions for contacting the other users, user accounts, reporting, ratings, etc.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
