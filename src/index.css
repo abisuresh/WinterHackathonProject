@@ -6,6 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://i.etsystatic.com/5251483/r/il/2fdfd9/586667263/il_570xN.586667263_tp2e.jpg');
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
 }
 
 code {
@@ -13,14 +16,95 @@ code {
     monospace;
 }
 
-#map {
-  height: 100%;
+/* styles */
+/* called by your view template */
+
+* {
+  box-sizing: border-box;
 }
 
-#mapDiv {
-  height: 500px;
-  width: 500px;
-  margin: 0;
-  padding: 0;
+
+#foreground {
+ background-color: rgb(253, 252, 231); 
+  padding: 10px;
+  margin: 10px;
+  }
+
+h1 {
+  text-align: center;
+  font-style: italic;
+  color: #373fff;
 }
+
+#choice {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+form {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: cyan;
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 3px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  box-shadow: 2px 2px teal;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: yellow;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
+
+
+
+    #map {
+      height: 100%;
+    }
+
+    #mapDiv {
+      height: 500px;
+      width: 500px;
+      margin: 0;
+      padding: 0;
+    }
     
