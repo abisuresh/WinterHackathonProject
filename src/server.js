@@ -23,3 +23,5 @@ app.get('/poll', function(request, response) {
   console.log('users is: ' + users);
   response.send(users);
 });
+
+app.listen(8000, () => console.log(`app listening on port ${8000}!`))
